@@ -1,15 +1,20 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
 
 android {
-    namespace "com.antarsabr.vpn"
+    namespace 'de.blinkt.openvpn'
     compileSdk 34
-    
+
     defaultConfig {
         applicationId "com.antarsabr.vpn"
         minSdk 21
         targetSdk 34
         versionCode 1
         versionName "1.0"
+        
+        // 📍 تفعيل ميزة BuildConfig التي كانت تسبب أخطاء في صورك القديمة
+        buildConfigField "boolean", "USE_SABR", "true"
     }
 
     buildFeatures {
@@ -28,6 +33,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    // المكتبة الأساسية
+    // المكتبة التي ستقوم بالاتصال بملف saudi.ovpn
     implementation 'com.github.pro-vpn:openvpn-api:1.0.5'
 }
