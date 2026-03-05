@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     namespace "com.antarsabr.vpn"
     compileSdk 34
+    
     defaultConfig {
         applicationId "com.antarsabr.vpn"
         minSdk 21
@@ -10,9 +11,23 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
 }
 
 dependencies {
-    implementation 'com.github.pro-vpn:openvpn-api:1.0.5' // المكتبة الجاهزة
     implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    // المكتبة الأساسية
+    implementation 'com.github.pro-vpn:openvpn-api:1.0.5'
 }
