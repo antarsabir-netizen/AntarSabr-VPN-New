@@ -1,11 +1,12 @@
-// ملف الإعدادات الأساسي
+// إعدادات البحث عن المكتبات والمحرك
 buildscript {
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:8.1.0"
+        // محرك الأندرويد الأساسي
+        classpath 'com.android.tools.build:gradle:8.0.2'
     }
 }
 
@@ -13,6 +14,10 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' } // هذا لجلب مكتبة الـ VPN الجاهزة
+        maven { url "https://jitpack.io" }
     }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
