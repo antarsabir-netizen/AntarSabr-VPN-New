@@ -13,15 +13,18 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
 
-      # 📍 هذا الجزء سيقوم بتثبيت Gradle بدلاً من البحث عن ملف gradlew الناقص
+      # 📍 استخدام إصدار دقيق جداً لضمان عدم حدوث خطأ "Version does not exist"
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: 8.0
+          gradle-version: '8.0.2'
 
+      # 📍 أمر سحري: إذا لم يجد ملف التشغيل، سيقوم بإنشائه فوراً
       - name: Build with Gradle
-        # 📍 نستخدم 'gradle' مباشرة بدلاً من './gradlew'
-        run: gradle assembleDebug
+        run: |
+          gradle wrapper
+          chmod +x gradlew
+          ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
