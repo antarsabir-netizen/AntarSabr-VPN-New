@@ -12,8 +12,6 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
-        
-        // 📍 تفعيل ميزة BuildConfig التي كانت تسبب أخطاء في صورك القديمة
         buildConfigField "boolean", "USE_SABR", "true"
     }
 
@@ -33,6 +31,5 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    // المكتبة التي ستقوم بالاتصال بملف saudi.ovpn
     implementation 'com.github.pro-vpn:openvpn-api:1.0.5'
 }
